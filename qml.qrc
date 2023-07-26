@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>macroHelp.qml</file>
+        <file>caloriesHelp.qml</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>F:/Project Folder/Currently Working On/Making GUIs/blue_question_mark-icon.png</file>
+        <file>F:/Project Folder/Currently Working On/Making GUIs/blue_qmark_icon.png</file>
+    </qresource>
+</RCC>
