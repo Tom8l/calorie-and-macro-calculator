@@ -61,7 +61,7 @@ Window {
             // Provides the blue question mark icon
             Image {
                 id: maintenanceQuestionMark
-                source: "qrc:/icons/F:/Project Folder/Currently Working On/Making GUIs/blue_qmark_icon.png"
+                source: "qrc:/icons/icons/blue_qmark_icon.png"
                 x: root.width - 35
                 y: 48
                 width: 25
@@ -421,7 +421,7 @@ Window {
            // For the blue question mark icon.
            Image {
                id: macroQuestionMark
-               source: "qrc:/icons/F:/Project Folder/Currently Working On/Making GUIs/blue_qmark_icon.png"
+               source: "qrc:/icons/icons/blue_qmark_icon.png"
                x: root.width - 35
                y: 48
                width: 25

@@ -44,7 +44,7 @@ Window {
             <ul>
                 <li>Fat loss - if you want to lose weight</li>
                 <li>Muscle growth - if you want to build muscle (this entails gaining weight)</li>
-                <li>Maintenance (recomp) - if you simply want to maintain your current weight</li>
+                <li>Maintenance (or recomp) - if you simply want to maintain your current weight</li>
             </ul>"
 
             width: root.width - 10
