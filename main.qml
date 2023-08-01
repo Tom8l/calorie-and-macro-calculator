@@ -16,7 +16,7 @@ Window {
     title: qsTr("Calorie & Macro Calculator")
 
 
-    // This part is simply responsible for the tabs above, their clickability and names, but NOT the actual content in the tabs.
+    // This part is simply responsible for the tabs at the top, their apperance, clickability and name, but NOT the actual content in the tabs.
     TabBar {
         id: mainTabBar
         anchors {
@@ -70,6 +70,8 @@ Window {
                 // Will open the help window for the Calories tab.
                 MouseArea {
                     anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: this.containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
 
                     property QtObject window
                     onClicked: {
@@ -110,20 +112,28 @@ Window {
                         Text {
                             text: "Sex"
                             font.pointSize: 10
+                            font.family: "Tahoma"
                         }
 
                         RadioButton {
+                            id: maleRadioButton
+
                             text: "Male"
+                            font.pointSize: 9   // Default pointSize is 8.25 and that screws up the RadioButton text for some reason
+                            font.family: "Tahoma"
                         }
 
                         RadioButton {
                             text: "Female"
+                            font.pointSize: 9   // Same as above
+                            font.family: "Tahoma"
                         }
 
                         Text {
                             id: caloriesSexError
                             text: "Please select your sex"
                             color: "red"
+                            font.family: "Tahoma"
                             visible: false
                         }
                     }
@@ -140,6 +150,7 @@ Window {
                         Text {
                             text: "Age"
                             font.pointSize: 10
+                            font.family: "Tahoma"
                         }
 
                         // Contains a regex that makes sure only numbers and exactly one decimal point can be typed
@@ -148,12 +159,15 @@ Window {
                             placeholderText: "Enter your age"
                             validator: RegExpValidator{regExp: /^\d*\.?\d*$/}
                             font.pointSize: 10
+                            font.family: "Tahoma"
+                            selectByMouse: true
                         }
 
                         Text {
                             id: caloriesAgeError
                             text: "Please fill in your age"
                             color: "red"
+                            font.family: "Tahoma"
                             visible: false
                         }
                     }
@@ -171,10 +185,12 @@ Window {
                         Text {
                             text: "Activity level"
                             font.pointSize: 10
+                            font.family: "Tahoma"
                         }
 
                         ComboBox {
                             id: activityLvlDropdown
+                            font.family: "Tahoma"
 
                             model: ListModel {
                                 id: activityLvls
@@ -213,6 +229,7 @@ Window {
                         Text {
                             text: "Weight (kg)"
                             font.pointSize: 10
+                            font.family: "Tahoma"
                         }
 
                         TextField {
@@ -220,12 +237,15 @@ Window {
                             placeholderText: "Enter your weight (kg)"
                             validator: RegExpValidator{regExp: /^\d*\.?\d*$/}
                             font.pointSize: 10
+                            font.family: "Tahoma"
+                            selectByMouse: true
                         }
 
                         Text {
                             id: caloriesWeightError
                             text: "Please fill in your weight"
                             color: "red"
+                            font.family: "Tahoma"
                             visible: false
                         }
                     }
@@ -242,6 +262,7 @@ Window {
                         Text {
                             text: "Height (cm)"
                             font.pointSize: 10
+                            font.family: "Tahoma"
                         }
 
                         TextField {
@@ -249,12 +270,15 @@ Window {
                             placeholderText: "Enter your height (cm)"
                             validator: RegExpValidator{regExp: /^\d*\.?\d*$/}
                             font.pointSize: 10
+                            font.family: "Tahoma"
+                            selectByMouse: true
                         }
 
                         Text {
                             id: caloriesHeightError
                             text: "Please fill in your height"
                             color: "red"
+                            font.family: "Tahoma"
                             visible: false
                         }
 
@@ -274,10 +298,12 @@ Window {
                         Text {
                             text: "Your goal"
                             font.pointSize: 10
+                            font.family: "Tahoma"
                         }
 
                         ComboBox {
                             id: goalDropDown
+                            font.family: "Tahoma"
 
                             model: ListModel {
                                 id: goalItems
@@ -300,12 +326,22 @@ Window {
                 Button {
                     id: maintenanceCalculateButton
                     text: "Calculate"
+                    font.family: "Tahoma"
                     anchors {
                         horizontalCenter: parent.horizontalCenter
                     }
 
-                    onClicked: {
+                    // Changing the cursor to pointing hand when hovering over the button
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: this.containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
+                        onPressed: {
+                            mouse.accepted = false;
+                        }
+                    }
 
+                    onClicked: {
                         // Checks whether any of the fields are empty or not.
                         // If there are, empty fields will display their error text...
                         // ...while non-empty ones will hide their error text (if it was visible)
@@ -373,6 +409,7 @@ Window {
 
                     text: "Your calorie intake (kcal)"
                     font.pointSize: 10
+                    font.family: "Tahoma"
                 }
 
 
@@ -390,24 +427,35 @@ Window {
                         rightMargin: 40
                     }
                     font.pointSize: 14
+                    font.family: "Tahoma"
                     readOnly: true
+                    selectByMouse: true
                 }
-
-
             }
 
 
             // This text should stick to the bottom, so it can't be part of the main column.
             Text {
-                id: macroMedscapecreditText
+                id: caloriesCreditText
                 text: "This uses the Mifflin-St Jeor Equation with <a href='https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation'>Medscape</a> as reference together with guidelines from <a href='https://www.aworkoutroutine.com/how-many-calories-should-i-eat-a-day/'>AWorkoutRoutine</a>"
-                onLinkActivated: Qt.openUrlExternally(link)
+                onLinkActivated: {
+                    Qt.openUrlExternally(link)
+                }
+                font.family: "Tahoma"
 
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
 
                 y: root.height - 20
+
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: caloriesCreditText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                    onPressed: {
+                        mouse.accepted = false;
+                    }
+                }
             }
         }
 
@@ -430,6 +478,8 @@ Window {
                // Making the icon clickable, making it open a help window.
                MouseArea {
                    anchors.fill: parent
+                   hoverEnabled: true
+                   cursorShape: this.containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
 
                    property QtObject window
                    onClicked: {
@@ -462,6 +512,7 @@ Window {
                        rightMargin: 23
                    }
                    font.pointSize: 10
+                   font.family: "Tahoma"
                }
 
 
@@ -474,9 +525,11 @@ Window {
                        rightMargin: 20
                    }
                    font.pointSize: 10
+                   font.family: "Tahoma"
                    height: 30
                    placeholderText: "Enter your calorie intake (kcal)"
                    validator: RegExpValidator{regExp: /^\d*\.?\d*$/}
+                   selectByMouse: true
                }
 
                Text {
@@ -487,6 +540,7 @@ Window {
                    }
                    text: "Please enter your determined calorie intake"
                    color: "red"
+                   font.family: "Tahoma"
                    visible: false
                }
 
@@ -507,6 +561,7 @@ Window {
                        rightMargin: 23
                    }
                    font.pointSize: 10
+                   font.family: "Tahoma"
                }
 
                TextField {
@@ -518,9 +573,11 @@ Window {
                        rightMargin: 20
                    }
                    font.pointSize: 10
+                   font.family: "Tahoma"
                    height: 30
                    placeholderText: "Enter your weight (kg)"
                    validator: RegExpValidator{regExp: /^\d*\.?\d*$/}
+                   selectByMouse: true
                }
 
                Text {
@@ -531,6 +588,7 @@ Window {
                    }
                    text: "Please enter your weight"
                    color: "red"
+                   font.family: "Tahoma"
                    visible: false
                }
            }
@@ -540,11 +598,21 @@ Window {
             Button {
                id: macroCalculateButton
                text: "Calculate"
+               font.family: "Tahoma"
 
                anchors {
                    horizontalCenter: kcalMacros.horizontalCenter
                    bottom: kcalMacros.top
                    bottomMargin: 30
+               }
+
+               MouseArea {
+                   anchors.fill: parent
+                   hoverEnabled: true
+                   cursorShape: this.containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
+                   onPressed: {
+                       mouse.accepted = false;
+                   }
                }
 
                onClicked: {
@@ -607,6 +675,7 @@ Window {
                 Text {
                     id: proteinOutputText
                     text: "Protein (g)"
+                    font.family: "Tahoma"
                 }
 
                 TextField {
@@ -614,6 +683,8 @@ Window {
                     width: root.width - parent.anchors.leftMargin*2
                     readOnly: true
                     font.pointSize: 14
+                    font.family: "Tahoma"
+                    selectByMouse: true
                 }
 
                 Item {
@@ -626,6 +697,7 @@ Window {
                 Text {
                     id: fatOutputText
                     text: "Fat (g)"
+                    font.family: "Tahoma"
                 }
 
                 TextField {
@@ -633,6 +705,8 @@ Window {
                     width: root.width - parent.anchors.leftMargin*2
                     readOnly: true
                     font.pointSize: 14
+                    selectByMouse: true
+                    font.family: "Tahoma"
                 }
 
                 Item {
@@ -645,6 +719,7 @@ Window {
                 Text {
                     id: carbsOutputText
                     text: "Carbs (g)"
+                    font.family: "Tahoma"
                 }
 
                 TextField {
@@ -652,6 +727,8 @@ Window {
                     width: root.width - parent.anchors.leftMargin*2
                     readOnly: true
                     font.pointSize: 14
+                    font.family: "Tahoma"
+                    selectByMouse: true
                 }
             }
 
@@ -659,15 +736,24 @@ Window {
 
            // Text linking to where the calculation guidelines came from
            Text {
-               id: macroAWRcreditText
+               id: macroCreditText
                text: "Numbers calculated according to guidelines on <a href='https://www.aworkoutroutine.com/how-to-calculate-macros/'>AWorkoutRoutine</a>"
                onLinkActivated: Qt.openUrlExternally(link)
+               font.family: "Tahoma"
 
                anchors {
                    horizontalCenter: parent.horizontalCenter
                }
 
                y: root.height - 20
+
+               MouseArea {
+                   anchors.fill: parent
+                   cursorShape: macroCreditText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                   onPressed: {
+                       mouse.accepted = false;
+                   }
+               }
            }
         }
 
@@ -695,6 +781,7 @@ Window {
                     text: "YOUR NEXT STEPS..."
                     font.bold: true
                     font.pointSize: 14
+                    font.family: "Tahoma"
 
                 }
 
@@ -703,11 +790,20 @@ Window {
 
                     text: "Calculating your calorie intake and macros is great and everything, but will be useless if you don't actually put it into action.<br>Furthermore, tracking your weight improperly (or not all) can derail your progress easily.<br><br>This tab will cover these two areas as much as this dinky little window of text is capable of doing, and will likely refer to external material.<br><br> (There was going to be something about resistance training as well, being a <i>requirement</i> for muscle growth and all, but I'm running out of space to type words on so I'll just link <a href='https://www.aworkoutroutine.com/beginner-workouts/'>this</a> and move on)."
                     font.pointSize: 10
+                    font.family: "Tahoma"
 
                     width: root.width - 10
                     wrapMode: "WordWrap"
 
                     onLinkActivated: Qt.openUrlExternally(link)
+
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: miscIntroText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                        onPressed: {
+                            mouse.accepted = false;
+                        }
+                    }
                 }
 
                 Item {
@@ -723,6 +819,7 @@ Window {
                     text: "MOTIVATION, HABITS & CONSISTENCY"
                     font.bold: true
                     font.pointSize: 12
+                    font.family: "Tahoma"
                 }
 
                 Text {
@@ -730,11 +827,20 @@ Window {
 
                     text: "To begin with: <b>forget</b> anything about <u>getting or staying motivated</u>. Why? Because motivation is <i>unreliable</i>. It comes around, knocking on your door to give you a warm embrace, only to disappear when you need it the most.<br><br> Instead, focus on <u>building habits, <b>one at a time</b></u>. Maybe you'll begin with just hitting your protein goal, regardless of calories or any of the other macros. Once you get used to doing so for a good 2 weeks or so, the next habit to establish could be to ensure your calorie intake is where it should be.<br><br> This <a href='https://www.aworkoutroutine.com/motivation/'>article</a> by AWorkoutRoutine explains everything in more detail."
                     font.pointSize: 10
+                    font.family: "Tahoma"
 
                     width: root.width - 10
                     wrapMode: "WordWrap"
 
                     onLinkActivated: Qt.openUrlExternally(link)
+
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: miscHabitsText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                        onPressed: {
+                            mouse.accepted = false;
+                        }
+                    }
                 }
 
 
@@ -752,6 +858,7 @@ Window {
                     text: "TRACKING YOUR WEIGHT"
                     font.bold: true
                     font.pointSize: 12
+                    font.family: "Tahoma"
                 }
 
                 Text {
@@ -767,6 +874,7 @@ Window {
                                 For muscle growth, aim to gain 0.5-1 kg per <u>month</u> if male, and 0.25-0.5 kg per <u>month</u> if female. Comparing monthly averages can be more useful here.
                                 <br><br>Lastly, please don't stress yourself too much over how your weight grows/shrinks over time. In practice, it's impossible to be gaining EXACTLY x kilograms per week/month, and sometimes your tracking will look slower/faster than it actually is."
                     font.pointSize: 10
+                    font.family: "Tahoma"
 
                     width: root.width - 10
                     wrapMode: "WordWrap"

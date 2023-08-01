@@ -26,6 +26,7 @@ Window {
             text: "CALORIES TAB HELP"
             font.pointSize: 12
             font.bold: true
+            font.family: "Tahoma"
         }
 
 
@@ -37,6 +38,7 @@ Window {
             wrapMode: "WordWrap"
 
             font.pointSize: 10
+            font.family: "Tahoma"
         }
 
         Text {
@@ -51,6 +53,7 @@ Window {
             wrapMode: "WordWrap"
 
             font.pointSize: 10
+            font.family: "Tahoma"
 
         }
 
@@ -64,6 +67,7 @@ Tracking body weight is explained in the <b>Next Steps...</b> tab. <br>"
             width: root.width - 10
             wrapMode: "WordWrap"
             font.pointSize: 10
+            font.family: "Tahoma"
 
         }
 
@@ -73,6 +77,7 @@ Tracking body weight is explained in the <b>Next Steps...</b> tab. <br>"
             width: root.width - 10
             wrapMode: "WordWrap"
             font.pointSize: 10
+            font.family: "Tahoma"
         }
     }
 }

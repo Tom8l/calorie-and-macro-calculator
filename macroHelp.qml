@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 
 Window {
     id: root
@@ -26,6 +27,7 @@ Window {
             text: "MACROS TAB HELP"
             font.pointSize: 12
             font.bold: true
+            font.family: "Tahoma"
         }
 
         Text {
@@ -36,6 +38,7 @@ Window {
             wrapMode: "WordWrap"
 
             font.pointSize: 10
+            font.family: "Tahoma"
         }
 
         Text {
@@ -46,6 +49,7 @@ Window {
             wrapMode: "WordWrap"
 
             font.pointSize: 10
+            font.family: "Tahoma"
         }
 
         Text {
@@ -55,6 +59,7 @@ Window {
             wrapMode: "WordWrap"
 
             font.pointSize: 10
+            font.family: "Tahoma"
 
         }
     }
