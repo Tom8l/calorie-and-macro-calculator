@@ -12,7 +12,7 @@ Click [HERE](https://github.com/Tom8l/calorie-and-macro-calculator/releases/down
 
 Once downloaded, extract the files and open **macro_calc.exe** to use the calculator.
 
-You can find other versions by clicking **Release** on the right-hand side of the repository page.
+You can find other versions by clicking **Releases** on the right-hand side of the repository page.
 
 
 
