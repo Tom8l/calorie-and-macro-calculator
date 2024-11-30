@@ -381,7 +381,7 @@ Window {
 
                         }
 
-                        // If every field is filled, do the calculation and display it in the "Calories (kcal" field.
+                        // If every field is filled, do the calculation and display it in the "Calories (kcal" field).
                         // Also hide any error texts, if they are visible.
                         else {
                             calorieOutputField.text = Backend.calorieEquation(sexButtons.checkedButton.text, caloriesAgeInput.text, activityLvlDropdown.currentValue, caloriesWeightInput.text, caloriesHeightInput.text, goalDropDown.currentValue)
@@ -788,11 +788,19 @@ Window {
                 Text {
                     id: miscIntroText
 
-                    text: "Calculating your calorie intake and macros is great and everything, but will be useless if you don't actually put it into action.<br>Furthermore, tracking your weight improperly (or not all) can derail your progress easily.<br><br>This tab will cover these two areas as much as this dinky little window of text is capable of doing, and will likely refer to external material.<br><br> (There was going to be something about resistance training as well, being a <i>requirement</i> for muscle growth and all, but I'm running out of space to type words on so I'll just link <a href='https://www.aworkoutroutine.com/beginner-workouts/'>this</a> and move on)."
+                    text: "You’ve just calculated your (estimated!) calorie intake and macros. Maybe there was some discomfort involved with entering your weight, or finding out what it was in the first place.
+
+But now you’re ready to get the ball rolling and watch as the fat melts off your body. As your muscles grow like a nest of rabbits left to their own. Right?
+
+Well I hope so, because unfortunately (maybe fortunately actually), nobody can MAKE YOU do the things you need to do to get that envious body. Hell, you might be in a situation much tougher than I’ve ever dealt with.
+
+For example, I’d have a hard time helping a single mom in her 40s, living paycheck to paycheck ON TOP of wanting to be healthier, beyond throwing generic advice at her. A 20-something guy may be easier, but still, any advice is a shot in the dark beyond generics.
+
+So I’ll simply leave you with a couple things that can be pretty damn important and then hope for the best."
                     font.pointSize: 10
                     font.family: "Tahoma"
 
-                    width: root.width - 10
+                    width: root.width - 15
                     wrapMode: "WordWrap"
 
                     onLinkActivated: Qt.openUrlExternally(link)
@@ -814,18 +822,20 @@ Window {
 
                 // Motivation & habits text
                 Text {
-                    id: miscHabitsHeader
+                    id: miscTrackingHeader
 
-                    text: "MOTIVATION, HABITS & CONSISTENCY"
+                    text: "TRACKING PROGRESS"
                     font.bold: true
                     font.pointSize: 12
                     font.family: "Tahoma"
                 }
 
                 Text {
-                    id: miscHabitsText
+                    id: miscTrackingText
 
-                    text: "To begin with: <b>forget</b> anything about <u>getting or staying motivated</u>. Why? Because motivation is <i>unreliable</i>. It comes around, knocking on your door to give you a warm embrace, only to disappear when you need it the most.<br><br> Instead, focus on <u>building habits, <b>one at a time</b></u>. Maybe you'll begin with just hitting your protein goal, regardless of calories or any of the other macros. Once you get used to doing so for a good 2 weeks or so, the next habit to establish could be to ensure your calorie intake is where it should be.<br><br> This <a href='https://www.aworkoutroutine.com/motivation/'>article</a> by AWorkoutRoutine explains everything in more detail."
+                    text: "You might’ve noticed the “estimated!” part above. Well, I put it there for a good reason. See, the calorie intake you got is just an estimate. It may work perfectly for reaching your goals... or not at all. <br><br> That’s why you likely want a way of knowing if it works, or if you need to adjust the intake. <br><br> <a href='https://www.aworkoutroutine.com/weighing-yourself/'>Here's a simple article on weight tracking</a> (still requires more than goldfish attention span though) <br><br> <a href='https://bodyrecomposition.com/fat-loss/bmi-weighing-frequency#Should_You_WeightMeasure_Frequently'>And here's a more detailed one</a>
+
+"
                     font.pointSize: 10
                     font.family: "Tahoma"
 
@@ -836,7 +846,7 @@ Window {
 
                     MouseArea {
                         anchors.fill: parent
-                        cursorShape: miscHabitsText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                        cursorShape: miscTrackingText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
                         onPressed: {
                             mouse.accepted = false;
                         }
@@ -846,33 +856,26 @@ Window {
 
                 Item {
                     width: 1
-                    height: 10
+                    height: 5
                 }
 
 
 
                 // Weight tracking text
                 Text {
-                    id: miscTrackingHeader
+                    id: miscHabitsHeader
 
-                    text: "TRACKING YOUR WEIGHT"
+                    text: "HABITS, MOTIVATION, AND ACTUALLY DOING THE WORK"
                     font.bold: true
                     font.pointSize: 12
                     font.family: "Tahoma"
                 }
 
                 Text {
-                    id: miscTrackingText
+                    id: miscHabitsText
 
-                    text: "The steps of <b>proper weight tracking</b> is as follows:
-                          <ul>
-                              <li>Weigh yourself every day, ideally in the morning (after finishing any business in the bathroom).</li>
-                              <li>Record your weight down somewhere, but <u>IGNORE DAILY DIFFERENCES IN WEIGHT</u>. They are <i>meaningless</i>.</li>
-                              <li>Instead, compare <u>each week's average</u> to each other.</li>
-                              <li>Only after you have 4+ weeks of averages, ask yourself if your calorie intake needs adjusting or not.</li>
-                          </ul><br> For fat loss, aim to lose 0.3-1% of your total weight per <u>week</u>.<br>
-                                For muscle growth, aim to gain 0.5-1 kg per <u>month</u> if male, and 0.25-0.5 kg per <u>month</u> if female. Comparing monthly averages can be more useful here.
-                                <br><br>Lastly, please don't stress yourself too much over how your weight grows/shrinks over time. In practice, it's impossible to be gaining EXACTLY x kilograms per week/month, and sometimes your tracking will look slower/faster than it actually is."
+                    text: "Chances are, you already know at least an iota about habits if you’re reading this. Maybe you even own a copy of <i>Atomic Habits</i> (and in that case I think you'll already know the stuff I'll show you) <br><br> Either way, here’s an article on motivation and habits, geared toward fitness goals: <a href='https://www.aworkoutroutine.com/motivation/'>click on me</a> <br>-----<br> And that’s all I have. I wish you the utmost of luck as you work toward that dream body of yours, or maybe just a healthier you.
+"
                     font.pointSize: 10
                     font.family: "Tahoma"
 
