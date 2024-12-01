@@ -792,11 +792,11 @@ Window {
 
 But now you’re ready to get the ball rolling and watch as the fat melts off your body. As your muscles grow like a nest of rabbits left to their own. Right?
 
-Well I hope so, because unfortunately (maybe fortunately actually), nobody can MAKE YOU do the things you need to do to get that envious body. Hell, you might be in a situation much tougher than I’ve ever dealt with.
+I hope so, because unfortunately (maybe fortunately actually), nobody can MAKE YOU do the things you need to do to get that envious body. Hell, you might be in a much tougher spot than I’ve ever dealt with.
 
-For example, I’d have a hard time helping a single mom in her 40s, living paycheck to paycheck ON TOP of wanting to be healthier, beyond throwing generic advice at her. A 20-something guy may be easier, but still, any advice is a shot in the dark beyond generics.
+For example, I’d have a hard time helping a single mom in her 40s, living paycheck to paycheck ON TOP of wanting to be healthier, beyond throwing generic advice at her. A 20-something guy may be easier, but still, anything else beyond generics is a shot in the dark.
 
-So I’ll simply leave you with a couple things that can be pretty damn important and then hope for the best."
+So I’ll simply leave you with a couple things that are pretty damn important and hope for the best."
                     font.pointSize: 10
                     font.family: "Tahoma"
 
@@ -874,13 +874,23 @@ So I’ll simply leave you with a couple things that can be pretty damn importan
                 Text {
                     id: miscHabitsText
 
-                    text: "Chances are, you already know at least an iota about habits if you’re reading this. Maybe you even own a copy of <i>Atomic Habits</i> (and in that case I think you'll already know the stuff I'll show you) <br><br> Either way, here’s an article on motivation and habits, geared toward fitness goals: <a href='https://www.aworkoutroutine.com/motivation/'>click on me</a> <br>-----<br> And that’s all I have. I wish you the utmost of luck as you work toward that dream body of yours, or maybe just a healthier you.
+                    text: "Chances are you already know at least an iota about habits if you’re reading this. Maybe you even own a copy of <i>Atomic Habits</i> (and in that case I think you'll already know the stuff I'll show you) <br><br> Either way, here’s an article on motivation and habits, geared toward fitness goals: <a href='https://www.aworkoutroutine.com/motivation/'>click on me</a> <br>-----<br> And that’s all I have. I wish you the utmost of luck as you work toward that dream body of yours, or maybe just a healthier you.
 "
                     font.pointSize: 10
                     font.family: "Tahoma"
 
                     width: root.width - 10
                     wrapMode: "WordWrap"
+
+                    onLinkActivated: Qt.openUrlExternally(link)
+
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: miscHabitsText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                        onPressed: {
+                            mouse.accepted = false;
+                        }
+                    }
                 }
             }
         }
