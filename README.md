@@ -8,7 +8,7 @@ WINDOWS ONLY AT THE MOMENT
 
 ## Download
 
-Click [HERE](https://github.com/Tom8l/calorie-and-macro-calculator/releases/download/v1.0.0/calorie-and-macro-calculator-v1.0.0.zip) to download the latest version.
+Click [HERE](https://github.com/Tom8l/calorie-and-macro-calculator/releases/download/v1.0.1/calorie-and-macro-calculator-v1.0.1.zip) to download the latest version.
 
 Once downloaded, extract the files and open **macro_calc.exe** to use the calculator.
 
