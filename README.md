@@ -56,9 +56,9 @@ And just to clarify, the weight you enter here is the same as the weight in the 
 
 ## Miscellaneous
 
-The **Next Steps** tab contains information regarding what you should do after you're done determining your calorie and macro intake. More specifically, it briefly covers the following areas:
+The **Next Steps** tab will briefly cover what to do after calculating your macros, and link to other resources regarding:
+- How to track your progress
 - How to ensure you actually stay on track with your diet
-- How to track your weight **properly**
 
 
 
